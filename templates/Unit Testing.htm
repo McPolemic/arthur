@@ -1,0 +1,75 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>6368 - Unit Testing</title>
+</head>
+<body>
+<div id="test">
+	<div id="header">
+		<p>TESTING DOCUMENT</p>
+		<p>For</p>
+		<p>Ohio MITS</p>
+		<p>Change Order # 6368</p>
+	</div>
+
+	<div id="revisions">
+		<table id="rev_table">
+			<thead>
+				<th>Last Update</td>
+				<th>Author</td>
+				<th>Change Description</td>
+			</thead>
+			<tr>
+				<td width="138">12/31/2299</td>
+				<td width="172">Adam Lukens</td>
+				<td width="284">Initial Creation</td>
+			</tr>
+		</table>
+	</div>
+	<div id="approach">
+		<h3>Test Approach:</h3>
+		<p>Verify the current and new functionality works according to the specifications.</p>
+	</div>
+	<div id="summary">
+		<h3>Test Case Summary:</h3>
+		<table class="bordered" width="682">
+			<thead>
+				<th width="61">Test Group Number</td>
+				<th width="101">Requirement Number</td>
+				<th>Test Group Title</td>
+				<th>Test Group Description</td>
+			</thead>
+			<tr>
+				<th class="centered">1.</td>
+				<td></td>
+				<td>Original Defect Claim</td>
+				<td>Check the claim is now paying an amount.</td>
+			</tr>
+		</table>
+	</div>
+	<div class="tests">
+		<ol>
+			<li>Original Defect Claim</li>
+			<table class="bordered">
+				<thead class="centered">
+					<th width="80">Test Case Number</td>
+					<th width="138">Test Condition</td>
+					<th>Input Data</td>
+					<th>Expected Results</td>
+					<th>Actual Results</td>
+				</thead>
+				<tr>
+					<th class="col_number">1.1</td>
+					<td>Run claim through system with applied changes</td>
+					<td>Tester's claim<br />AutomatedTxns/Traci/TC_006777-Edit_303__IP_Bypass.xml</td>
+					<td>Claim pays an amount greater than $0.00</td>
+					<td>As expected.&nbsp; See <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-prior.xml">6368-prior.xml</a>,
+  <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-post.xml">6368-post.xml</a>,
+  and <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-diff.html">6368-diff.html</a></td>
+				</tr>
+			</table>
+		</ol>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>{{ g.number }} - Program Specifications</title>
+</head>
+<body>
+<div id="spec">
+	<div id="header">
+		<p>{{ p.title }}</p>
+		<p>For</p>
+		<p>Ohio MITS</p>
+		<p>Change Order # {{ g.number }}</p>
+	</div>
+
+	<div id="revisions">
+		<table id="rev_table">
+			<thead>
+				<th>Last Update</td>
+				<th>Author</td>
+				<th>Change Description</td>
+			</thead>
+			{% for line in p.revision_history %}
+			<tr>
+				<td width="138">{{ line.last_update }}</td>
+				<td width="172">{{ line.author }}</td>
+				<td width="284">{{ line.description }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<div id="code_header">
+		<p><strong>ASSUMPTIONS &ndash; </strong>{{ p.assumptions }}</p>
+		<p><strong>PROGRAM SPECIFICATIONS &ndash; </strong>{{ p.program_specs_intro }}</p>
+	</div>
+	<p><strong>Design:</strong></p>
+	{% for m in p.modules %}
+	<div class="code_module">
+		<table class="code_info_table">
+			<tr>
+				<th class="col_head"><p>Module Name:</p></td>
+				<td><p>{{ m.name }}</p></td>
+			</tr>
+			<tr>
+				<th class="col_head"><p>Module Purpose:</p></td>
+				<td><p>{{ m.purpose }}</p></td>
+			</tr>
+			<tr>
+				<th class="col_head"><p>Prerequisites:</p></td>
+				<td><p>{{ m.prerequisites }}</p></td>
+			</tr>
+			<tr>
+				<th class="col_head"><p>Input Data:</p></td>
+				<td><p>{{ m.input }}</p></td>
+			</tr>
+			<tr>
+				<th class="col_head"><p>Output Data:</p></td>
+				<td><p>{{ m.output }}</p></td>
+			</tr>
+			<tr>
+				<th class="col_head"><p>System Parms:</p></td>
+				<td><p>{{ m.system_parms }}</p></td>
+			</tr>
+		</table>
+		<pre>Lines changed in <span class="red">Red</span>
+Lines added are in <span class="light-blue">Blue</span></pre>
+		<p>{{ m.function }}</p>
+		<p>{{ m.description }}</p>
+	</div>
+	{% endfor %}
+</div>
+</body>
+</html>

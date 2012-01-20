@@ -1,0 +1,34 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>{{ g.number }} - {{ p.title }}</title>
+</head>
+<body>
+<div id="{{ p.container_id }}">
+	<div id="header">
+		<p>{{ p.title }}</p>
+		<p>For</p>
+		<p>Ohio MITS</p>
+		<p>Change Order # {{ g.number }}</p>
+	</div>
+
+	<div id="revisions">
+		<table id="rev_table">
+			<thead>
+				<th>Last Update</td>
+				<th>Author</td>
+				<th>Change Description</td>
+			</thead>
+			{% for line in p.revision_history %}
+			<tr>
+				<td width="138">{{ line.last_update }}</td>
+				<td width="172">{{ line.author }}</td>
+				<td width="284">{{ line.description }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% block body %}
+	{% endblock %}
+</div>
+</html>
