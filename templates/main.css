@@ -112,7 +112,7 @@ h3 {
 	font-size: 11pt;
 }
 
-#implement table td,#implement th {
+#tasks table td,#tasks th {
 	padding-left: 20px;
 	padding-right: 20px;
 }
