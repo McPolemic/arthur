@@ -1,6 +1,177 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<style>
+	{% block style %}
+#header p{
+	text-align: center;
+	margin: 0px;
+	font-weight: bold;
+}
+
+#header {
+	margin-bottom: 20px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table thead {
+	font-weight: bold;
+}
+
+table td,th {
+	border: 1pt solid black;
+	vertical-align: top;
+}
+
+.bordered
+{
+	border-width: 1.5pt;
+}
+
+.bordered thead th
+{
+	border-width: 1.5pt;
+}
+
+.light-blue
+{
+	color: #00B0F0;
+}
+
+.red
+{
+	color: red;
+}
+
+.centered {
+	text-align: center;
+}
+
+#rev_table {
+	border-width: 1.5pt;
+	border-bottom-width: 1pt;
+	margin-left:5.4pt;
+}
+
+#rev_table td,#rev_table th {
+	padding-left: 5.4pt;
+	padding-right: 5.4pt;
+	font-size: 11pt;
+	text-align: center;
+}
+
+#rev_table thead {
+	height: 19px;
+}
+
+.col_head {
+	background: #CCC;
+	font-weight: bold;
+	width: 172px;
+}
+
+h4 {
+	text-align: center;
+}
+
+h3 {
+	text-transform: uppercase;
+	font-size: 11pt;
+	margin-bottom: 0;
+}
+
+/* Section-specific styles */
+/* Program Specifications */
+#spec p {
+	margin-bottom: 0;
+}
+
+.code_module {
+	margin-bottom: 20px;
+}
+
+.code_module p,pre {
+	margin: 0px;
+}
+
+.code_info_table {
+	margin-bottom: 20px;
+	font-size: 11pt;
+	width: 600px;
+}
+
+.code_info_table td,.code_info_table th {
+	padding-left: 5.4pt;
+}
+
+/* Implementation Plan */
+#implement table thead {
+	font-size: 11pt;
+}
+
+#implement table tr {
+	font-size: 11pt;
+}
+
+#tasks table td,#tasks th {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* Unit Testing */
+#approach p {
+	margin: 0;
+}
+
+#summary table {
+	font-size: 10pt;
+}
+
+#summary td,#summary th {
+	padding: 0 10px 0 10px;
+}
+
+#summary thead {
+	border-bottom: double;
+	text-align: left;
+}
+
+.tests ol {
+	padding-left: 18px;
+}
+
+.tests table {
+	margin-left: -18px;
+	margin-top: 18px;
+	font-size: 10pt;
+	width: 868px;
+	table-layout: fixed;
+}
+
+.tests li {
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.tests thead {
+	text-transform: uppercase;
+}
+
+.tests td {
+	overflow: auto;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.col_number {
+	font-weight: bold;
+	text-align: center;
+}
+	{% endblock %}
+	</style>
 	<title>{{ g.number }} - {{ p.title }}</title>
 </head>
 <body>

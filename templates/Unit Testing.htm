@@ -2,7 +2,7 @@
 {% block body %}
 	<div id="approach">
 		<h3>Test Approach:</h3>
-		<p>Verify the current and new functionality works according to the specifications.</p>
+		<p>{{ p.approach }}</p>
 	</div>
 	<div id="summary">
 		<h3>Test Case Summary:</h3>
@@ -13,16 +13,19 @@
 				<th>Test Group Title</td>
 				<th>Test Group Description</td>
 			</thead>
+			{% for line in summary %}
 			<tr>
-				<th class="centered">1.</td>
-				<td></td>
-				<td>Original Defect Claim</td>
-				<td>Check the claim is now paying an amount.</td>
+				<th class="centered">line.number</td>
+				<td>line.requirement</td>
+				<td>line.title</td>
+				<td>line.description</td>
 			</tr>
+			{% endfor %}
 		</table>
 	</div>
 	<div class="tests">
 		<ol>
+			{% for line in p.summary %}
 			<li>Original Defect Claim</li>
 			<table class="bordered">
 				<thead class="centered">
@@ -32,16 +35,17 @@
 					<th>Expected Results</td>
 					<th>Actual Results</td>
 				</thead>
+				{% for d in line.details %}
 				<tr>
-					<th class="col_number">1.1</td>
-					<td>Run claim through system with applied changes</td>
-					<td>Tester's claim<br />AutomatedTxns/Traci/TC_006777-Edit_303__IP_Bypass.xml</td>
-					<td>Claim pays an amount greater than $0.00</td>
-					<td>As expected.&nbsp; See <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-prior.xml">6368-prior.xml</a>,
-  <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-post.xml">6368-post.xml</a>,
-  and <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-diff.html">6368-diff.html</a></td>
+					<th class="col_number">{{ d.number }}</td>
+					<td>{{ d.condition }}</td>
+					<td>{{ d.input }}</td>
+					<td>{{ d.expected }}</td>
+					<td>{{ d.actual }}</td>
 				</tr>
+				{% endfor %}
 			</table>
+			{% endfor %}
 		</ol>
 	</div>
 {% endblock %}

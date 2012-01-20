@@ -8,6 +8,7 @@ global_conf = {
 program_specs = {
     "title": "Program Specifications",
     "container_id": "spec",
+
     "revision_history": [{
         "last_update": "10/28/2011",
         "author": "Adam Lukens",
@@ -64,6 +65,7 @@ program_specs = {
 unit_test = {
     "title": "Testing Document",
     "container_id": "test",
+
     "revision_history": [{
         "last_update": "10/28/2011",
         "author": "Adam Lukens",
@@ -75,35 +77,34 @@ unit_test = {
         "number": "1.",
         "requirement": "",
         "title": "Original Defect Claim",
-        "description": "Check the claim is now paying an amount."        
+        "description": "Check the claim is now paying an amount.",
+
+        "details": [{
+            "number": "1.1",
+            "condition": "Run claim through system with applied changes",
+            "input": "Tester's claim AutomatedTxns/Traci/TC_006777-Edit_303__IP_Bypass.xml",
+            "expected": "Claim pays an amount greater than $0.00",
+            "actual": 
+md("""As expected. See [6368-prior.xml][prior], [6368-post.xml][post], and [6368-diff.html][diff]
+
+[prior]: https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-prior.xml
+[post]:  https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-post.xml
+[diff]:  https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-diff.html""")
     }],
-    #Already sure this is going to have to be re-written.
-    #I like the idea of having an array of details, with subarrays for each subtest.
-    # 1.1
-    # 1.2
-    # 1.3
-    # ----
-    # 2.1 (etc.)
-    "details": [{
-        "number": "1.1",
-        "condition": "Run claim through system with applied changes",
-        "input": "Tester's claim AutomatedTxns/Traci/TC_006777-Edit_303__IP_Bypass.xml",
-        "expected": "Claim pays an amount greater than $0.00",
-        "actual": """As expected. See <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-prior.xml">6368-prior.xml</a>,
-  <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-post.xml">6368-post.xml</a>,
-  and <a href="https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-diff.html">6368-diff.html"""
+
     }]
 }
 
 implementation = {
     "title": "Implementation Plan",
     "container_id": "implement",
+
     "revision_history": [{
         "last_update": "10/28/2011",
         "author": "Adam Lukens",
         "description": "Initial Creation"
     }],
-    "summary": """<<Program specification goes here>>.""",
+    "summary": """Program specification goes here.""",
     "tasks": {
         "file": {
             "name": "",
@@ -116,6 +117,32 @@ implementation = {
             "promotion_list": """<pre>libclmub92.so      1.160</pre>""",
             "mo": "",
             "prod": "",
+        },
+        "autosys": {
+            "name": "",
+            "promotion_list": "",
+            "mo": "",
+            "prod": "",
+        },
+        "deleted": {
+            "name": "",
+            "promotion_list": "",
+            "mo": "",
+            "prod": "",
+        },
+    },
+    'database': {
+        'table': {
+            'name': '',
+            'location': ''
+        },
+        'xml': {
+            'name': '',
+            'location': ''
+        },
+        'updates': {
+            'name': '',
+            'location': ''
         }
     }
 }
@@ -125,16 +152,16 @@ files = {
     'Implementation Plan': {
         'template_name': 'Implementation Plan.htm',
         'settings_dict': implementation,
-        'output': './output/Implementation Plan.html'
+        'output': './output/%s - Implementation Plan.html' % global_conf['number']
     },
     'Program Specifications': {
         'template_name': 'Program Specifications.htm',
         'settings_dict': program_specs,
-        'output': './output/Program Specifications.html'
+        'output': './output/%s - Program Specifications.html' % global_conf['number']
     },
     'Unit Testing': {
         'template_name': 'Unit Testing.htm',
         'settings_dict': unit_test,
-        'output': './output/Unit Testing.html'
+        'output': './output/%s - Unit Testing.html' % global_conf['number']
     }
 }
