@@ -1,31 +1,5 @@
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="main.css">
-	<title>6368 - Unit Testing</title>
-</head>
-<body>
-<div id="test">
-	<div id="header">
-		<p>TESTING DOCUMENT</p>
-		<p>For</p>
-		<p>Ohio MITS</p>
-		<p>Change Order # 6368</p>
-	</div>
-
-	<div id="revisions">
-		<table id="rev_table">
-			<thead>
-				<th>Last Update</td>
-				<th>Author</td>
-				<th>Change Description</td>
-			</thead>
-			<tr>
-				<td width="138">12/31/2299</td>
-				<td width="172">Adam Lukens</td>
-				<td width="284">Initial Creation</td>
-			</tr>
-		</table>
-	</div>
+{% extends "base.htm" %}
+{% block body %}
 	<div id="approach">
 		<h3>Test Approach:</h3>
 		<p>Verify the current and new functionality works according to the specifications.</p>
@@ -70,6 +44,4 @@
 			</table>
 		</ol>
 	</div>
-</div>
-</body>
-</html>
+{% endblock %}
