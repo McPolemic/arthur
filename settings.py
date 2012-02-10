@@ -1,5 +1,5 @@
 from datetime import date
-from settings_defaults import *
+from arthur.settings_defaults import *
 
 global_conf = {
 	'number': '15135',
