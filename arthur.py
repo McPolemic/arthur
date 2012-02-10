@@ -30,7 +30,7 @@ def init(path):
     arthur_dir = os.path.dirname(arthur.__file__)
 
     #Copy application files
-    for target in ('main.py', 'settings.py'):
+    for target in ('refresh_docs.py', 'settings.py'):
         shutil.copy(os.path.join(arthur_dir, target), path)
 
     #Copy Template directory
