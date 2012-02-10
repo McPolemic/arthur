@@ -1,15 +1,12 @@
 #!/usr/bin/python
 
 import os
+import sys
+import shutil
 from tools import windows_pause
 from jinja2 import Environment
 from jinja2 import ChoiceLoader, PackageLoader, FileSystemLoader
-import shutil
 import arthur
-
-#Temporarily adding python directory to sys.path
-import sys
-sys.path.append('C:\\Users\\lukens\\Documents\\Python')
 
 import settings
 
@@ -76,7 +73,7 @@ def run():
         out.write(output)
         out.close()
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) > 1:
         if sys.argv[1] == 'init':
             init_here(os.getcwd())
@@ -87,3 +84,6 @@ if __name__ == '__main__':
     else:
         run()
     windows_pause()
+
+if __name__ == '__main__':
+    main()
