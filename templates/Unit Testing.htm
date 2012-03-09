@@ -13,12 +13,12 @@
 				<th>Test Group Title</td>
 				<th>Test Group Description</td>
 			</thead>
-			{% for line in summary %}
+			{% for line in p.summary %}
 			<tr>
-				<th class="centered">line.number</td>
-				<td>line.requirement</td>
-				<td>line.title</td>
-				<td>line.description</td>
+				<th class="centered">{{ line.number }}</td>
+				<td>{{ line.requirement }}</td>
+				<td>{{ line.title }}</td>
+				<td>{{ line.description }}</td>
 			</tr>
 			{% endfor %}
 		</table>

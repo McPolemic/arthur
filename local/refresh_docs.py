@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import settings
-from arthur import arthur
+import arthur.arthur_main
 
 if __name__ == '__main__':
-    arthur.main()
+    arthur.arthur_main.main()

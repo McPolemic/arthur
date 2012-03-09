@@ -38,6 +38,18 @@ class Opt(dict):
     def iterkeys(self): return self.data.iterkeys()
     def itervalues(self): return self.data.itervalues()
 
+common_file_purpose = {
+    "clmsub92.sc": "Main UB92 claims functions",
+    "rdrKey.sc":   "RetroDUR Key Survey integration functions",
+}
+
+def common_purpose(filename):
+    return common_file_purpose[filename]
+
+def co_attached_file(co_num, filename):
+    return "https://itrace.ohxix.slg.eds.com/ohio42/Subsystem/RetroDUR/Change%%20Orders/%s/%s" % (co_num, filename)
+
+## GLOBAL SETTINGS ##
 global_conf = {
 	'number': '15135',
 }
@@ -193,21 +205,21 @@ implementation = {
     }
 }
 
-#The pairs are "file to be generated" and "template file"
-files = {
-    'Implementation Plan': {
-        'template_name': 'Implementation Plan.htm',
-        'settings_dict': implementation,
-        'output': './output/%s - Implementation Plan.html' % global_conf['number']
-    },
-    'Program Specifications': {
-        'template_name': 'Program Specifications.htm',
-        'settings_dict': program_specs,
-        'output': './output/%s - Program Specifications.html' % global_conf['number']
-    },
-    'Unit Testing': {
-        'template_name': 'Unit Testing.htm',
-        'settings_dict': unit_test,
-        'output': './output/%s - Unit Testing.html' % global_conf['number']
-    }
-}
+# #The pairs are "file to be generated" and "template file"
+# files = {
+#     'Implementation Plan': {
+#         'template_name': 'Implementation Plan.htm',
+#         'settings_dict': implementation,
+#         'output': './output/%s - Implementation Plan.html' % global_conf['number']
+#     },
+#     'Program Specifications': {
+#         'template_name': 'Program Specifications.htm',
+#         'settings_dict': program_specs,
+#         'output': './output/%s - Program Specifications.html' % global_conf['number']
+#     },
+#     'Unit Testing': {
+#         'template_name': 'Unit Testing.htm',
+#         'settings_dict': unit_test,
+#         'output': './output/%s - Unit Testing.html' % global_conf['number']
+#     }
+# }
