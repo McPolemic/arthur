@@ -2,7 +2,6 @@
 import os
 import sys
 import shutil
-from tools import windows_pause
 from jinja2 import Environment
 from jinja2 import ChoiceLoader, PackageLoader, FileSystemLoader
 import arthur
@@ -82,12 +81,6 @@ def main():
             usage()
     else:
         run()
-
-    #Try to pause, but don't error out if we're not running in a terminal
-    try:
-        windows_pause()
-    except EOFError:
-        pass
 
 if __name__ == '__main__':
     main()
