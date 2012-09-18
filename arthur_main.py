@@ -77,10 +77,9 @@ def main():
             init_here()
         elif sys.argv[1] == 'run':
             run()
-        else:
-            usage()
     else:
-        run()
+        usage()
+        sys.exit(0)
 
 if __name__ == '__main__':
     main()
