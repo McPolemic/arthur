@@ -143,106 +143,11 @@ md(r"""
     ]
 }
 
-unit_test = {
-    "title": "Testing Document",
-    "container_id": "test",
-
-    "revision_history": [{
-        "last_update": "10/28/2011",
-        "author": "Adam Lukens",
-        "description": "Initial Creation"
-    }],
-
-    "approach": "Run tests against the Test database and record the output.",
-    "summary": [{
-        "number": "1.",
-        "requirement": "",
-        "title": "Server Timing Issues",
-        "description": "Check the claim is now paying an amount.",
-
-        "details": [{
-            "number": "1.1",
-            "condition": "Run claim through system with applied changes",
-            "input": "Tester's claim AutomatedTxns/Traci/TC_006777-Edit_303__IP_Bypass.xml",
-            "expected": "Claim pays an amount greater than $0.00",
-            "actual": 
-md("""As expected. See [6368-prior.xml][prior], [6368-post.xml][post], and [6368-diff.html][diff]
-
-[prior]: https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-prior.xml
-[post]:  https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-post.xml
-[diff]:  https://itrace.ohxix.slg.eds.com/Ohio42/Subsystem/Claims/Change%20Orders/6368/Testing/6368-diff.html""")
-    }],
-
-    }]
-}
-
-implementation = {
-    "title": "Implementation Plan",
-    "container_id": "implement",
-
-    "revision_history": [{
-        "last_update": "10/28/2011",
-        "author": "Adam Lukens",
-        "description": "Initial Creation"
-    }],
-    "summary": """Program specification goes here.""",
-    "tasks": {
-        "file": {
-            "name": "",
-            "promotion_list": """<pre>clmsub92.sc        1.85</pre>""",
-            "mo": "",
-            "prod": "",
-        },
-        "module": {
-            "name": "",
-            "promotion_list": """<pre>libclmub92.so      1.160</pre>""",
-            "mo": "",
-            "prod": "",
-        },
-        "autosys": {
-            "name": "",
-            "promotion_list": "",
-            "mo": "",
-            "prod": "",
-        },
-        "deleted": {
-            "name": "",
-            "promotion_list": "",
-            "mo": "",
-            "prod": "",
-        },
-    },
-    'database': {
-        'table': {
-            'name': '',
-            'location': ''
-        },
-        'xml': {
-            'name': '',
-            'location': ''
-        },
-        'updates': {
-            'name': '',
-            'location': ''
-        }
-    }
-}
-
 # The pairs are "file to be generated" and "template file"
 files = {
-    'Implementation Plan': {
-        'template_name': 'Implementation Plan.html',
-        'settings_dict': implementation,
-        'output': './output/%s - Implementation Plan.html' % global_conf['number']
-    },
     'Program Specifications': {
         'template_name': 'Program Specifications.html',
         'settings_dict': program_specs,
         'output': './output/%s - Program Specifications.html' % global_conf['number']
-    },
-    'Unit Testing': {
-        'template_name': 'Unit Testing.html',
-        'settings_dict': unit_test,
-        'output': './output/%s - Unit Testing.html' % global_conf['number']
     }
 }
