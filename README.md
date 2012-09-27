@@ -1,11 +1,10 @@
 # Arthur
 
-At my current occupation, forms such as testing documentation and 
-walkthrough forms are created using Microsoft Word and saving to HTML. This 
-leads to a number of issues, from differences in how a document looks between 
-browsers and Word to constantly having to fight with Word's kludgy indenting 
-and table width rules. I was convinced a better way existed. Arthur is an 
-experiment in this direction.
+At my current job, forms such as testing documentation and walkthrough forms are
+created using Microsoft Word and saving to HTML. This leads to a number of
+issues, from differences in how a document looks between browsers and Word to
+constantly having to fight with Word's kludgy indenting and table width rules. I
+was convinced a better way existed. Arthur is an experiment in this direction.
 
 Once installed, arthur can initialize a directory by typing the following:
 
