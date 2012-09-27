@@ -38,20 +38,9 @@ class Opt(dict):
     def iterkeys(self): return self.data.iterkeys()
     def itervalues(self): return self.data.itervalues()
 
-common_file_purpose = {
-    "clmsub92.sc": "Main UB92 claims functions",
-    "rdrKey.sc":   "RetroDUR Key Survey integration functions",
-}
-
-def common_purpose(filename):
-    return common_file_purpose[filename]
-
-def co_attached_file(co_num, filename):
-    return "https://itrace.ohxix.slg.eds.com/ohio42/Subsystem/RetroDUR/Change%%20Orders/%s/%s" % (co_num, filename)
-
 ## GLOBAL SETTINGS ##
 global_conf = {
-	'number': '15135',
+	'number': '91214',
 }
 
 program_specs = {
@@ -72,9 +61,10 @@ program_specs = {
         Opt({
             "name": "network_server.c",
             "purpose": "Server wrapping code",
-            "prerequisites": "N\A",
+            "prerequisites": "N/A",
             "function": "handle_new_connection()",
-            "description": r"""
+            "description": 
+md(r"""
 <pre>void handle_new_connection() {
     int listnum;    /* Current item in connectlist for for loops */
     int connection; /* Socket file descriptor for incoming connections */
@@ -108,7 +98,7 @@ program_specs = {
         close(connection);
     }
 }</pre>
-"""
+""")
         }),
         Opt({
             "name": "network_client.java",
@@ -241,17 +231,17 @@ implementation = {
 # The pairs are "file to be generated" and "template file"
 files = {
     'Implementation Plan': {
-        'template_name': 'Implementation Plan.htm',
+        'template_name': 'Implementation Plan.html',
         'settings_dict': implementation,
         'output': './output/%s - Implementation Plan.html' % global_conf['number']
     },
     'Program Specifications': {
-        'template_name': 'Program Specifications.htm',
+        'template_name': 'Program Specifications.html',
         'settings_dict': program_specs,
         'output': './output/%s - Program Specifications.html' % global_conf['number']
     },
     'Unit Testing': {
-        'template_name': 'Unit Testing.htm',
+        'template_name': 'Unit Testing.html',
         'settings_dict': unit_test,
         'output': './output/%s - Unit Testing.html' % global_conf['number']
     }

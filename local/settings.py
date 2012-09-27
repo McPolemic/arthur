@@ -4,7 +4,7 @@ from datetime import date
 from arthur.settings_defaults import *
 
 global_conf = {
-	'number': 'XX_NEWCO_XX',
+	'number': '11111',
 }
 
 #Set revision date to today
@@ -167,20 +167,20 @@ for i in (program_specs, unit_test, implementation):
 #     }
 # }
 
-#The pairs are "file to be generated" and "template file"
+# The pairs are "file to be generated" and "template file"
 files = {
     'Implementation Plan': {
-        'template_name': 'Implementation Plan.htm',
+        'template_name': 'Implementation Plan.html',
         'settings_dict': implementation,
         'output': './output/%s - Implementation Plan.html' % global_conf['number']
     },
     'Program Specifications': {
-        'template_name': 'Program Specifications.htm',
+        'template_name': 'Program Specifications.html',
         'settings_dict': program_specs,
         'output': './output/%s - Program Specifications.html' % global_conf['number']
     },
     'Unit Testing': {
-        'template_name': 'Unit Testing.htm',
+        'template_name': 'Unit Testing.html',
         'settings_dict': unit_test,
         'output': './output/%s - Unit Testing.html' % global_conf['number']
     }
