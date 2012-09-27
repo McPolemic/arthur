@@ -32,14 +32,15 @@ table td,th {
 	border-width: 1.5pt;
 }
 
-.light-blue
+.addition
 {
 	color: #00B0F0;
 }
 
-.red
+.deletion
 {
 	color: red;
+	text-decoration: line-through;
 }
 
 .centered {

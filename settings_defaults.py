@@ -70,52 +70,85 @@ program_specs = {
     
     "modules": [
         Opt({
-            "name": "clmsub92.sc",
-            "purpose": "Main UB92 claims function",
+            "name": "network_server.c",
+            "purpose": "Server wrapping code",
             "prerequisites": "N\A",
-            "function": "ub92Main()",
-            "description": md("""This is a **multi-line**
+            "function": "handle_new_connection()",
+            "description": r"""
+<pre>void handle_new_connection() {
+    int listnum;    /* Current item in connectlist for for loops */
+    int connection; /* Socket file descriptor for incoming connections */
 
-string""")
+    /* We have a new connection coming in!  We'll
+    try to find a spot for it in connectlist. */
+    connection = accept(sock, NULL, NULL);
+
+    if (connection < 0) {
+        <span class="addition">perror("accept");</span>
+        exit(EXIT_FAILURE);
+    }
+
+    setnonblocking(connection);
+
+    for (listnum = 0; (listnum < 5) && (connection != -1); listnum++)
+        if (connectlist[listnum] == 0) {
+            <span class="addition">printf("\nConnection accepted:   FD=%d; Slot=%d\n",
+                connection,listnum);</span>
+            <span class="deletion">printf("\nConnection accepted:   FD=%d\n",
+                connection,listnum);</span>
+            connectlist[listnum] = connection;
+            connection = -1;
+        }
+
+    if (connection != -1) {
+        /* No room left in the queue! */
+        printf("\nNo room left for new client.\n");
+        sock_puts(connection,"Sorry, this server is too busy.  "
+                    Try again later!\r\n");
+        close(connection);
+    }
+}</pre>
+"""
         }),
         Opt({
-            "name": "clmsub92.sc",
-            "purpose": "Main UB92 claims function",
+            "name": "network_client.java",
+            "purpose": "Client wrapping code",
             "prerequisites": "N\A",
             "input": "",
             "output": "",
             "system_parms": "",
-            "function": "ub92Main()",
+            "function": "client_connect()",
             "description":
-"""<pre>Line 1967
-    if (!is_ch_encounter())
-        dp_claim(clmStatus);
+            r"""<pre>// Create a socket without a timeout
+    try {
+        InetAddress addr = InetAddress.getByName("java.sun.com");
+        <span class="addition">int port = 80;</span>
 
-    <span class="light-blue">/* DF 6368: Moved call higher in execution for if statement */
-    get_uh_indDRGPriced(indDRGPriced);</span>
-
-    /* OH 741 apply TPL before co-pay */
-    <span class="red"><s>/* Co-Ordination of Benefit Plans */
-    /*DF 6582*/
-    if (is_ch_payOnOneProgram() || indDRGPriced[0] == 'Y')
-    {
-       xref_bp_cobProcessing();
+        // This constructor will block until the connection succeeds
+        <span class="deletion">Socket socket = new Socket(addr, 80);</span>
+        <span class="addition">Socket socket = new Socket(addr, port);</span>
+    } catch (UnknownHostException e) {
+    } catch (IOException e) {
     }
-    else
-    {
-       xref_bp_dtlCobProcessing();
-    }</s></span>
 
-    /* TPL Deductions -  Reverse Payer Order */
-    if(cdeClmType[0] == 'A' || cdeClmType[0] == 'L' ||  /* For inpatient, part A and C, and LTC claims
-       cdeClmType[0] == 'I' || cdeClmType[0] == 'C')    /* apply the TPL amount at the header level.
-    {                                                   /* - CO 2835, DFC 5436, 5917
-       xref_applyTpl();
-    }
-    else
-    {
-       xref_dtlApplyTpl();
-    }</pre>"""
+    // Create a socket with a timeout
+    try {
+        InetAddress addr = InetAddress.getByName("java.sun.com");
+        <span class="addition">int port = 80;</span>
+        <span class="deletion">SocketAddress sockaddr = new InetSocketAddress(addr, 80);</span>
+        <span class="addition">SocketAddress sockaddr = new InetSocketAddress(addr, port);</span>
+
+        // Create an unbound socket
+        Socket sock = new Socket();
+
+        // This method will block no more than timeoutMs.
+        // If the timeout occurs, SocketTimeoutException is thrown.
+        int timeoutMs = 2000;   // 2 seconds
+        sock.connect(sockaddr, timeoutMs);
+    } catch (UnknownHostException e) {
+    } catch (SocketTimeoutException e) {
+    } catch (IOException e) {
+    }"""
         }),
     ]
 }
@@ -130,11 +163,11 @@ unit_test = {
         "description": "Initial Creation"
     }],
 
-    "approach": "Verify the current and new functionality works according to the specifications.",
+    "approach": "Run tests against the Test database and record the output.",
     "summary": [{
         "number": "1.",
         "requirement": "",
-        "title": "Original Defect Claim",
+        "title": "Server Timing Issues",
         "description": "Check the claim is now paying an amount.",
 
         "details": [{
@@ -205,21 +238,21 @@ implementation = {
     }
 }
 
-# #The pairs are "file to be generated" and "template file"
-# files = {
-#     'Implementation Plan': {
-#         'template_name': 'Implementation Plan.htm',
-#         'settings_dict': implementation,
-#         'output': './output/%s - Implementation Plan.html' % global_conf['number']
-#     },
-#     'Program Specifications': {
-#         'template_name': 'Program Specifications.htm',
-#         'settings_dict': program_specs,
-#         'output': './output/%s - Program Specifications.html' % global_conf['number']
-#     },
-#     'Unit Testing': {
-#         'template_name': 'Unit Testing.htm',
-#         'settings_dict': unit_test,
-#         'output': './output/%s - Unit Testing.html' % global_conf['number']
-#     }
-# }
+# The pairs are "file to be generated" and "template file"
+files = {
+    'Implementation Plan': {
+        'template_name': 'Implementation Plan.htm',
+        'settings_dict': implementation,
+        'output': './output/%s - Implementation Plan.html' % global_conf['number']
+    },
+    'Program Specifications': {
+        'template_name': 'Program Specifications.htm',
+        'settings_dict': program_specs,
+        'output': './output/%s - Program Specifications.html' % global_conf['number']
+    },
+    'Unit Testing': {
+        'template_name': 'Unit Testing.htm',
+        'settings_dict': unit_test,
+        'output': './output/%s - Unit Testing.html' % global_conf['number']
+    }
+}
