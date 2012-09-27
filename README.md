@@ -34,3 +34,8 @@ This project is still in its infancy. Please feel free to try it out, and notify
 me of any issues that come up. As I said, this is an experiment, so changes in
 this workflow may appear at any time. Please check this README for any
 updates.
+
+## Prerequisites
+Python 2.5
+Jinja2
+Markdown (Optional, but recommended)
